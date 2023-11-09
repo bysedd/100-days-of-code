@@ -1,7 +1,8 @@
 from string import ascii_lowercase
 
-from art import logo
 from colorama import Fore, Style
+
+from art import logo
 
 alphabet = [*ascii_lowercase]
 
