@@ -19,7 +19,9 @@ def calculator() -> None:
             print(f"{number1} {operation} {number2} = {answer}")
             number1 = answer
             continue_flag = (
-                input(f"Type 'y' to continue calculating with {number1}, or 'n' to exit: ")
+                input(
+                    f"Type 'y' to continue calculating with {number1}, or 'n' to exit: "
+                )
                 .strip()
                 .lower()
                 == "y"
