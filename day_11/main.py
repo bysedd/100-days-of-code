@@ -3,6 +3,7 @@ from random import choice
 
 from art import logo
 
+# Initialize the deck of cards and the hands of the user and computer
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 user_cards = []
 computer_cards = []
@@ -11,6 +12,10 @@ user_score, computer_score = 0, 0
 
 
 def show_results() -> None:
+    """
+    Function to display the final results of the game.
+    It compares the scores of the user and the computer and prints the result.
+    """
     global user_cards, computer_cards, user_score, computer_score
 
     print(f"\tYour final hand: {user_cards}, final score: {user_score}")
@@ -32,6 +37,10 @@ def show_results() -> None:
 
 
 def compare() -> str:
+    """
+    Function to compare the hands of the user and the computer.
+    It checks for blackjack and whether the user's score is over 21.
+    """
     global user_cards, computer_cards, user_score
 
     result = ""
@@ -59,6 +68,10 @@ def compare() -> str:
 
 
 def reset_game() -> None:
+    """
+    Function to reset the game.
+    It reinitializes the deck of cards and the hands of the user and the computer.
+    """
     global cards, user_cards, computer_cards
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     user_cards = []
@@ -66,6 +79,10 @@ def reset_game() -> None:
 
 
 def keep_playing_game() -> None:
+    """
+    Function to ask the user if they want to continue playing.
+    If the user wants to continue, it clears the console and resets the game.
+    """
     global keep_playing
     keep_playing = input(
         "Do you want to play a game of Blackjack? Type 'y' or 'n': "
@@ -79,19 +96,31 @@ def keep_playing_game() -> None:
 
 
 def deal_cards(__cards):
+    """
+    Function to deal cards.
+    It returns a list of two random cards from the deck.
+    """
     return [choice(__cards) for _ in range(2)]
 
 
 def calculate_score(__cards):
+    """
+    Function to calculate the score of a hand.
+    It returns the sum of the values of the cards in the hand.
+    """
     return sum(__cards)
 
 
 def play_game():
+    """
+    Main function to play the game.
+    It deals cards, calculates scores, compares hands, and asks the user if they want to continue playing.
+    """
     global user_cards, computer_cards, keep_playing
 
     if (
-        input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
-        == "y"
+            input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+            == "y"
     ):
         print(logo)
 
