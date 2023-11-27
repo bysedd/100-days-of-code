@@ -89,9 +89,10 @@ def calculate_score(__cards):
 def play_game():
     global user_cards, computer_cards, keep_playing
 
-    if input(
-            "Do you want to play a game of Blackjack? Type 'y' or 'n': "
-    ).lower() == "y":
+    if (
+        input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+        == "y"
+    ):
         print(logo)
 
         while keep_playing:
