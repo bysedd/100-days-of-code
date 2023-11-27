@@ -58,7 +58,7 @@ def compare() -> str:
     return result
 
 
-def reset_game():
+def reset_game() -> None:
     global cards, user_cards, computer_cards
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     user_cards = []
