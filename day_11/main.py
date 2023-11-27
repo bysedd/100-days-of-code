@@ -14,7 +14,6 @@ user_score, computer_score = 0, 0
 def show_results() -> None:
     """
     Function to display the final results of the game.
-    It compares the scores of the user and the computer and prints the result.
     """
     global user_cards, computer_cards, user_score, computer_score
 
@@ -39,7 +38,8 @@ def show_results() -> None:
 def compare() -> str:
     """
     Function to compare the hands of the user and the computer.
-    It checks for blackjack and whether the user's score is over 21.
+
+    :return: The result of the comparison
     """
     global user_cards, computer_cards, user_score
 
@@ -70,7 +70,6 @@ def compare() -> str:
 def reset_game() -> None:
     """
     Function to reset the game.
-    It reinitializes the deck of cards and the hands of the user and the computer.
     """
     global cards, user_cards, computer_cards
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -81,7 +80,6 @@ def reset_game() -> None:
 def keep_playing_game() -> None:
     """
     Function to ask the user if they want to continue playing.
-    If the user wants to continue, it clears the console and resets the game.
     """
     global keep_playing
     keep_playing = input(
@@ -95,26 +93,29 @@ def keep_playing_game() -> None:
         print(logo)
 
 
-def deal_cards(__cards):
+def deal_cards(__cards: list[int]) -> list[int]:
     """
     Function to deal cards.
-    It returns a list of two random cards from the deck.
+
+    :param __cards: List containing the deck of cards
+    :return: List of cards dealt
     """
     return [choice(__cards) for _ in range(2)]
 
 
-def calculate_score(__cards):
+def calculate_score(__cards: list[int]) -> int:
     """
     Function to calculate the score of a hand.
-    It returns the sum of the values of the cards in the hand.
+
+    :param __cards: List of cards
+    :return: The score of the hand
     """
     return sum(__cards)
 
 
-def play_game():
+def play_game() -> None:
     """
     Main function to play the game.
-    It deals cards, calculates scores, compares hands, and asks the user if they want to continue playing.
     """
     global user_cards, computer_cards, keep_playing
 
@@ -130,24 +131,24 @@ def play_game():
                 user_cards = deal_cards(cards)
                 computer_cards = deal_cards(cards)
 
-            user_score = calculate_score(user_cards)
-            computer_score = calculate_score(computer_cards)
+            player_score = calculate_score(user_cards)
+            pc_score = calculate_score(computer_cards)
 
             if compare():
                 show_results()
                 keep_playing_game()
                 continue
 
-            print(f"\tYour cards: {user_cards}, current score: {user_score}")
+            print(f"\tYour cards: {user_cards}, current score: {player_score}")
             print(f"\tComputer's first card: {computer_cards[0]}")
 
             get_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
             if get_card == "y":
                 user_cards.append(choice(cards))
             elif get_card == "n":
-                while user_score != 0 and computer_score < 17:
+                while player_score != 0 and pc_score < 17:
                     computer_cards.append(choice(cards))
-                    computer_score = calculate_score(computer_cards)
+                    pc_score = calculate_score(computer_cards)
                 show_results()
                 keep_playing_game()
             else:
