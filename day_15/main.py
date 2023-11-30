@@ -7,7 +7,9 @@ milk = resources["milk"]
 coffee = resources["coffee"]
 
 while True:
-    choice = input("\tWhat would you like? (espresso/latte/cappuccino): ").strip().lower()
+    choice = (
+        input("\tWhat would you like? (espresso/latte/cappuccino): ").strip().lower()
+    )
 
     match choice:
         case "report":
