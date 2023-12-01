@@ -1,9 +1,5 @@
 import turtle
-from random import randint
-
-tim = turtle.Turtle()
-tim.speed(5)
-tim.screen.bgcolor("black")
+from random import randint, choice
 
 
 def random_color() -> tuple[float, float, float]:
@@ -13,11 +9,14 @@ def random_color() -> tuple[float, float, float]:
     return r / 255, g / 255, b / 255
 
 
-for sides in range(4, 11):
-    angle = 360 / sides
-    tim.pencolor(random_color())
-    for _ in range(sides):
-        tim.forward(100)
-        tim.right(angle)
+tim = turtle.Turtle()
+tim.speed("fast")
+tim.screen.bgcolor("black")
+tim.pensize(10)
 
-turtle.exitonclick()
+for _ in range(200):
+    tim.color(random_color())
+    tim.setheading(choice([0, 90, 180, 270]))
+    tim.forward(30)
+
+tim.screen.exitonclick()
