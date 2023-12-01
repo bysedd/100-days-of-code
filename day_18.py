@@ -10,7 +10,7 @@ def random_color() -> tuple[float, float, float]:
 
 
 tim = turtle.Turtle()
-tim.speed("fast")
+tim.speed("fastest")
 tim.screen.bgcolor("black")
 tim.pensize(10)
 
