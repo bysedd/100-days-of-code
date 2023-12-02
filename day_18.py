@@ -1,15 +1,22 @@
 import turtle
 from random import randint, choice
 
+tim = turtle.Turtle()
+tim.screen.colormode(255)
+
 
 def random_color() -> tuple[float, float, float]:
+    """
+    Generates random RGB color values.
+
+    :return: A tuple of three float values representing the RGB color values.
+    """
     r = randint(0, 255)
     g = randint(0, 255)
     b = randint(0, 255)
-    return r / 255, g / 255, b / 255
+    return r, g, b
 
 
-tim = turtle.Turtle()
 tim.speed("fastest")
 tim.screen.bgcolor("black")
 tim.pensize(10)
