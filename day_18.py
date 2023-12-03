@@ -1,5 +1,5 @@
 import turtle
-from random import randint, choice
+from random import randint
 
 tim = turtle.Turtle()
 tim.screen.colormode(255)
@@ -19,11 +19,11 @@ def random_color() -> tuple[float, float, float]:
 
 tim.speed("fastest")
 tim.screen.bgcolor("black")
-tim.pensize(10)
 
-for _ in range(200):
+# Draw a spirograph
+for _ in range(72):
     tim.color(random_color())
-    tim.setheading(choice([0, 90, 180, 270]))
-    tim.forward(30)
+    tim.circle(100)
+    tim.left(5)
 
 tim.screen.exitonclick()
